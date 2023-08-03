@@ -1,0 +1,37 @@
+table.browser {
+    display: block;
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow-x: auto;
+  }
+  
+  table.browser tr:nth-child(2n) {
+    background-color: #efefef;
+  }
+  
+  table.browser th,
+  table.browser td {
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: 5px;
+  }
+  
+  table.browser th {
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+  
+  table.browser td:first-child {
+    min-width: 1em;
+  }
+  
+  table.browser td:nth-child(2) {
+    text-align: left;
+    width: 100%;
+  }
+  
+  table.browser td:nth-child(3) {
+    text-align: left;
+  }

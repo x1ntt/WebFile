@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, user-scalable=no"/>
+  <title>布局测试</title>
+  <style>
+    body {
+        margin: 0px;
+    }
+    div {
+        border: 1px solid #000000;
+    }
+    .header {
+        height: 50px;
+    }
+    .body {
+        height: 100%;
+        background-color: aliceblue;
+    }
+
+    .flex_container {
+        display: flex;
+  	    flex-direction: row;
+          height: 100%;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .menu {
+        flex: 1 0 100px;
+    }
+    .content {
+        flex: 9;
+    }
+  </style>
+</head>
+<body>
+    <div class="header">
+        顶
+    </div>
+    <div class="body flex_container">
+        <div class="menu">
+            menu
+        </div>
+        <div class="content">
+            content
+        </div>
+    </div>
+    <!-- <div class="footer">
+        脚
+    </div> -->
+</body>
+</html>

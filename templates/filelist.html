@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/filelist.css') }}"/>
+{% endblock %}
+
+{% block content %}
+<h2>
+    <a href="{{ root_path }}"> ROOT</a> /
+    {% for file in path_list %}
+        <a href="{{ root_path }}/{{file.path}}">{{file.file}}/</a>
+    {% endfor %}
+    <br>
+</h2>
+
+<form action="/browsefile/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file1" multiple>
+    <input type="text" name="path" value="{{path_list[-1].path}}" hidden>
+    <input type="submit" value="上传文件(多选)">
+</form>
+
+<table class="browser">
+    <tr>
+        <th>文件</th>
+        <th>操作</th>
+        <th>修改时间</th>
+        <th>大小</th>
+    </tr>
+    {% for node in node_list%}
+        {% if node.isDir %}
+            <tr>
+                <td><a href="javascript:;" onclick="location.href = location.href + '/{{node.name}}' ">{{node.name}}</a></td>
+                <td></td>
+                <td>{{node.mtime}}</td>
+                <td>{{node.size}}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    {% for node in node_list%}
+        {% if not node.isDir %}
+            <tr>
+                <td>{{node.name}}</td>
+                <td><a href="/browsefile/download{{path_list[-1].path}}/{{node.name}}">下载</a></td>
+                <td>{{node.mtime}}</td>
+                <td>{{node.size}}</td>
+            </tr>
+            {% endif %}
+    {% endfor %}
+</table>
+{% endblock %}
