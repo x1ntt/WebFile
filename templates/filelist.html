@@ -31,7 +31,7 @@
         {% if node.isDir %}
             <tr>
                 <td><a href="javascript:;" onclick="location.href = location.href + '/{{node.name}}' ">{{node.name}}</a></td>
-                <td></td>
+                <td><a href="/browsefile/delete{{path_list[-1].path}}/{{node.name}}">删除</a></td>
                 <td>{{node.mtime}}</td>
                 <td>{{node.size}}</td>
             </tr>
@@ -41,7 +41,10 @@
         {% if not node.isDir %}
             <tr>
                 <td>{{node.name}}</td>
-                <td><a href="/browsefile/download{{path_list[-1].path}}/{{node.name}}">下载</a></td>
+                <td>
+                    <a href="/browsefile/download{{path_list[-1].path}}/{{node.name}}">下载</a>
+                    <a href="/browsefile/delete{{path_list[-1].path}}/{{node.name}}">删除</a>
+                </td>
                 <td>{{node.mtime}}</td>
                 <td>{{node.size}}</td>
             </tr>

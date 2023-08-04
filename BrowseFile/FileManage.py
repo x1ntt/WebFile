@@ -2,6 +2,7 @@ from BrowseFile.Exception import NotIsDirException
 
 import os
 import time
+import shutil
 
 class FileManage:
     def __init__():
@@ -33,4 +34,11 @@ class FileManage:
         for node in nodes:
             node_list.append({"name":node.name, "isDir":node.is_dir(), "size":cls.convertFileSize(node.stat().st_size), "mtime":time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(node.stat().st_mtime))})
         return node_list
+    
+    @classmethod
+    def delele(cls, path):
+        if os.path.isdir(path):
+            shutil.rmtree(path)
+        else:
+            os.remove(path)
         

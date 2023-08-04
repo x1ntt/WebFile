@@ -2,6 +2,7 @@ from flask import Blueprint, current_app, render_template, send_from_directory, 
 from zipfile import ZipFile
 import os
 from werkzeug.utils import secure_filename
+import shutil
 
 from .FileManage import FileManage
 from .Exception import NotIsDirException
@@ -48,5 +49,12 @@ def file_upload():
         if f.filename == "":
             continue
         elif f:
-            f.save(os.path.join(abs_path, (f.filename)))
+            f.save(os.path.join(abs_path, secure_filename(f.filename)))
     return "1"
+
+@browse_file_blueprint.route('/delete/<path:path>')
+def file_delete(path):
+    print(f"Delete: {path}")
+    abs_path = current_app.config["ROOT_PATH"] + "/" + path
+    FileManage.delele(abs_path)
+    return path
