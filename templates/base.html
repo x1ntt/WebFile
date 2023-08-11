@@ -4,15 +4,16 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, user-scalable=no"/>
   <title>{% block title %}{% endblock %}</title>
+  {% block head %}{% endblock %}
   {% block styles %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}"/>
   {% endblock %}
-  {% block head %}{% endblock %}
+  {% block scripts %}{% endblock %}
 </head>
 <body>
   {% block header %}{% endblock %}
   {% block content %}{% endblock %}
   {% block footer %}{% endblock %}
-  {% block scripts %}{% endblock %}
+  
 </body>
 </html>

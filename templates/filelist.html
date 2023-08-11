@@ -5,6 +5,11 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/filelist.css') }}"/>
 {% endblock %}
 
+{% block scripts %}
+    {{ super() }}
+    
+{% endblock %}
+
 {% block content %}
 <h2>
     <a href="{{ root_path }}"> ROOT</a> /
@@ -19,6 +24,8 @@
     <input type="text" name="path" value="{{path_list[-1].path}}" hidden>
     <input type="submit" value="上传文件(多选)">
 </form>
+
+<input type="button" value="创建文件夹">
 
 <table class="browser">
     <tr>
@@ -52,3 +59,4 @@
     {% endfor %}
 </table>
 {% endblock %}
+

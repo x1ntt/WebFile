@@ -58,3 +58,10 @@ def file_delete(path):
     abs_path = current_app.config["ROOT_PATH"] + "/" + path
     FileManage.delele(abs_path)
     return path
+
+@browse_file_blueprint.route('/createfolder/<path:path>')
+def folder_create(path):
+    print(f"folder_create: {path}")
+    abs_path = current_app.config["ROOT_PATH"] + "/" + path
+    FileManage.folder_create(abs_path)
+    return path

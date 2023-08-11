@@ -41,4 +41,8 @@ class FileManage:
             shutil.rmtree(path)
         else:
             os.remove(path)
+    
+    @classmethod
+    def folder_create(cls, path):
+        os.makedirs(path)
         
